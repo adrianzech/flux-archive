@@ -4,3 +4,4 @@ resources:
   - longhorn-namespace.yaml
   - longhorn-repository.yaml
   - longhorn-release.yaml
+  - longhorn-ui-ingress.yaml
