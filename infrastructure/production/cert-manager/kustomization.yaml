@@ -4,7 +4,6 @@ resources:
   - cert-manager-namespace.yaml
   - cert-manager-repository.yaml
   - cert-manager-release.yaml
-  - cert-manager-values-configmap.yaml
   - cert-manager-issuer-secret.yaml
   - cert-manager-issuer.yaml
   - cert-manager-wildcard-certificate.yaml

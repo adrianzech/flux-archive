@@ -16,6 +16,5 @@ spec:
       interval: 5m
   releaseName: cert-manager
   targetNamespace: cert-manager
-  valuesFrom:
-    - kind: ConfigMap
-      name: cert-manager-values
+  values:
+    installCRDs: true
