@@ -16,14 +16,6 @@ spec:
       interval: 5m
   releaseName: cert-manager
   targetNamespace: cert-manager
-  install:
-    remediation:
-      remediateLastFailure: true
-    crds: CreateReplace
-  upgrade:
-    remediation:
-      remediateLastFailure: true
-    crds: CreateReplace
   valuesFrom:
     - kind: ConfigMap
       name: cert-manager-values
