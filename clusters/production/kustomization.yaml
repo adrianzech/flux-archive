@@ -4,6 +4,8 @@ resources:
   - flux-system/
   - cert-manager-release.yaml
   - cert-manager-config.yaml
+  - metallb-release.yaml
+  - metallb-config.yaml
   - infrastructure.yaml
   - applications.yaml
 
