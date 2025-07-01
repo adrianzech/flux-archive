@@ -4,4 +4,3 @@ resources:
   - traefik-namespace.yaml
   - traefik-repository.yaml
   - traefik-release.yaml
-  - traefik-values-configmap.yaml

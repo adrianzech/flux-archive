@@ -6,6 +6,8 @@ resources:
   - cert-manager-config.yaml
   - metallb-release.yaml
   - metallb-config.yaml
+  - traefik-release.yaml
+  - traefik-config.yaml
   - infrastructure.yaml
   - applications.yaml
 
