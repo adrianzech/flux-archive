@@ -4,12 +4,14 @@ metadata:
   name: production-infrastructure
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: cert-manager-config
+    - name: metallb-config
+    - name: longhorn-config
+    - name: traefik-config
   interval: 10m
   path: ./infrastructure/production
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  dependsOn:
-    - name: flux-system
-      namespace: flux-system
