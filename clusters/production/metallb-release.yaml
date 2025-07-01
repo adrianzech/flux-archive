@@ -15,3 +15,12 @@ spec:
       kind: Deployment
       name: controller
       namespace: metallb-system
+  patches:
+    - patch: |
+        - op: add
+          path: /spec/template/spec/hostNetwork
+          value: true
+      target:
+        kind: Deployment
+        name: controller
+        namespace: metallb-system
