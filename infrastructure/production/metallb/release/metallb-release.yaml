@@ -5,6 +5,7 @@ metadata:
   namespace: metallb-system
 spec:
   interval: 15m
+  timeout: 10m
   chart:
     spec:
       chart: metallb
@@ -19,9 +20,7 @@ spec:
   install:
     remediation:
       remediateLastFailure: true
-    crds: CreateReplace
   upgrade:
     remediation:
       remediateLastFailure: true
-    crds: CreateReplace
   values: { }
