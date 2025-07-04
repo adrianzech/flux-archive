@@ -13,7 +13,7 @@ spec:
   healthChecks:
     - apiVersion: apps/v1
       kind: Deployment
-      name: controller
+      name: metallb-controller
       namespace: metallb-system
   patches:
     - patch: |
@@ -22,5 +22,5 @@ spec:
           value: true
       target:
         kind: Deployment
-        name: controller
+        name: metallb-controller
         namespace: metallb-system
