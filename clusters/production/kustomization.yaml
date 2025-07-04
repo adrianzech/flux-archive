@@ -2,10 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - flux-system/
-  - cert-manager-release.yaml
-  - cert-manager-config.yaml
+  - longhorn-release.yaml
+  - longhorn-config.yaml
   - metallb-release.yaml
   - metallb-config.yaml
+  - cert-manager-release.yaml
+  - cert-manager-config.yaml
   - traefik-release.yaml
   - traefik-config.yaml
   - infrastructure.yaml
