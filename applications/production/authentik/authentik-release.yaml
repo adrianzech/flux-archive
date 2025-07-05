@@ -22,15 +22,9 @@ spec:
       error_reporting:
         enabled: true
 
-    ingress:
-      enabled: false
-
-    # For simplicity, we use the bundled PostgreSQL.
-    # For production, an external database is recommended.
     postgresql:
       enabled: true
 
-    # Enable persistence and use Longhorn for storage.
     persistence:
       enabled: true
       storageClass: "longhorn"
