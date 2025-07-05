@@ -4,3 +4,4 @@ resources:
   - nginx-namespace.yaml
   - nginx-deployment.yaml
   - nginx-service.yaml
+  - nginx-ingress.yaml
