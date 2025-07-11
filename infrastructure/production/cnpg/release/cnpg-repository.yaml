@@ -1,7 +1,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: cloudnativepg
+  name: cloudnative-pg
   namespace: cnpg-system
 spec:
   interval: 10m
