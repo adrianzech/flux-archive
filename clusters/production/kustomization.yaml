@@ -10,5 +10,6 @@ resources:
   - cert-manager-config.yaml
   - traefik-release.yaml
   - traefik-config.yaml
+  - cnpg-release.yaml
   - infrastructure.yaml
   - applications.yaml
