@@ -4,9 +4,6 @@ metadata:
   name: authentik
   namespace: authentik
 spec:
-  dependsOn:
-    - name: authentik-database
-      namespace: authentik
   interval: 15m
   timeout: 10m
   chart:
