@@ -1,0 +1,14 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: checkmk-ingress
+  namespace: checkmk
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`checkmk.zech.dev`)
+      kind: Rule
+      services:
+        - name: checkmk-cluster-collector
+          port: 8080

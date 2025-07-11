@@ -4,3 +4,4 @@ resources:
   - checkmk-namespace.yaml
   - checkmk-repository.yaml
   - checkmk-release.yaml
+  - checkmk-ingress.yaml
