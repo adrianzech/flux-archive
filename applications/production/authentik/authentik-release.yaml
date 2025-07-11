@@ -18,10 +18,8 @@ spec:
   values:
     authentik:
       secret_key: file:///run/secrets/authentik/secret_key
-
       error_reporting:
         enabled: true
-
       postgresql:
         host: authentik-database-rw.authentik.svc.cluster.local
         user: file:///authentik-database-credentials/username
@@ -34,6 +32,9 @@ spec:
     persistence:
       enabled: true
       storageClass: "longhorn"
+      size: 10Gi
+      accessModes:
+        - ReadWriteOnce
 
     server:
       volumes:
