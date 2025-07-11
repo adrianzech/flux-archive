@@ -15,61 +15,28 @@ spec:
         name: authentik
         namespace: authentik
       interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: authentik-secret-key
+      valuesKey: AUTHENTIK_SECRET_KEY
+      targetPath: authentik.secret_key
+      optional: true
+
+    - kind: Secret
+      name: authentik-database-authentik
+      valuesKey: password
+      targetPath: authentik.postgresql.password
+      optional: true
+
   values:
     authentik:
-      secret_key: file:///run/secrets/authentik/secret_key
       error_reporting:
         enabled: true
+
       postgresql:
         host: authentik-database-rw.authentik.svc.cluster.local
-        user: file:///authentik-database-credentials/username
-        password: file:///authentik-database-credentials/password
-        database: file:///authentik-database-credentials/dbname
+        user: authentik
+        database: authentik
 
     postgresql:
       enabled: false
-
-    persistence:
-      enabled: true
-      storageClass: "longhorn"
-      size: 10Gi
-      accessModes:
-        - ReadWriteOnce
-
-    server:
-      volumes:
-        - name: authentik-database-credentials
-          secret:
-            secretName: authentik-database-authentik
-        - name: authentik-secret-key
-          secret:
-            secretName: authentik-secret-key
-            items:
-              - key: AUTHENTIK_SECRET_KEY
-                path: secret_key
-      volumeMounts:
-        - name: authentik-database-credentials
-          mountPath: /authentik-database-credentials
-          readOnly: true
-        - name: authentik-secret-key
-          mountPath: /run/secrets/authentik
-          readOnly: true
-
-    worker:
-      volumes:
-        - name: authentik-database-credentials
-          secret:
-            secretName: authentik-database-authentik
-        - name: authentik-secret-key
-          secret:
-            secretName: authentik-secret-key
-            items:
-              - key: AUTHENTIK_SECRET_KEY
-                path: secret_key
-      volumeMounts:
-        - name: authentik-database-credentials
-          mountPath: /authentik-database-credentials
-          readOnly: true
-        - name: authentik-secret-key
-          mountPath: /run/secrets/authentik
-          readOnly: true
