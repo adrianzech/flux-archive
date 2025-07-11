@@ -15,30 +15,20 @@ spec:
         name: authentik
         namespace: authentik
       interval: 5m
-  valuesFrom:
-    - kind: Secret
-      name: authentik-database-authentik
-      valuesKey: password
-      targetPath: authentik.postgresql.password
-    - kind: Secret
-      name: authentik-database-authentik
-      valuesKey: username
-      targetPath: authentik.postgresql.user
-    - kind: Secret
-      name: authentik-database-authentik
-      valuesKey: dbname
-      targetPath: authentik.postgresql.database
   values:
     authentik:
       secret_key:
         secretName: authentik-secret-key
         secretKey: AUTHENTIK_SECRET_KEY
-
+        
       error_reporting:
         enabled: true
 
       postgresql:
         host: authentik-database-rw.authentik.svc.cluster.local
+        user: file:///authentik-database-credentials/username
+        password: file:///authentik-database-credentials/password
+        database: file:///authentik-database-credentials/dbname
 
     postgresql:
       enabled: false
@@ -46,3 +36,23 @@ spec:
     persistence:
       enabled: true
       storageClass: "longhorn"
+
+    server:
+      volumes:
+        - name: authentik-database-credentials
+          secret:
+            secretName: authentik-database-authentik
+      volumeMounts:
+        - name: authentik-database-credentials
+          mountPath: /authentik-database-credentials
+          readOnly: true
+
+    worker:
+      volumes:
+        - name: authentik-database-credentials
+          secret:
+            secretName: authentik-database-authentik
+      volumeMounts:
+        - name: authentik-database-credentials
+          mountPath: /authentik-database-credentials
+          readOnly: true
