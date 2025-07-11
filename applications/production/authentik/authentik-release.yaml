@@ -22,8 +22,27 @@ spec:
       error_reporting:
         enabled: true
 
+      postgresql:
+        host: authentik-database-rw.authentik.svc.cluster.local
+
+        user:
+          valueFrom:
+            secretKeyRef:
+              name: authentik-database-authentik
+              key: username
+        database:
+          valueFrom:
+            secretKeyRef:
+              name: authentik-database-authentik
+              key: dbname
+        password:
+          valueFrom:
+            secretKeyRef:
+              name: authentik-database-authentik
+              key: password
+
     postgresql:
-      enabled: true
+      enabled: false
 
     persistence:
       enabled: true
