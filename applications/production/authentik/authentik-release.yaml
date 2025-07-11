@@ -15,32 +15,30 @@ spec:
         name: authentik
         namespace: authentik
       interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: authentik-database-authentik
+      valuesKey: password
+      targetPath: authentik.postgresql.password
+    - kind: Secret
+      name: authentik-database-authentik
+      valuesKey: username
+      targetPath: authentik.postgresql.user
+    - kind: Secret
+      name: authentik-database-authentik
+      valuesKey: dbname
+      targetPath: authentik.postgresql.database
   values:
     authentik:
       secret_key:
         secretName: authentik-secret-key
         secretKey: AUTHENTIK_SECRET_KEY
+
       error_reporting:
         enabled: true
 
       postgresql:
         host: authentik-database-rw.authentik.svc.cluster.local
-
-        user:
-          valueFrom:
-            secretKeyRef:
-              name: authentik-database-authentik
-              key: username
-        database:
-          valueFrom:
-            secretKeyRef:
-              name: authentik-database-authentik
-              key: dbname
-        password:
-          valueFrom:
-            secretKeyRef:
-              name: authentik-database-authentik
-              key: password
 
     postgresql:
       enabled: false
