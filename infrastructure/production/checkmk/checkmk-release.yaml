@@ -1,0 +1,29 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: checkmk
+  namespace: checkmk
+spec:
+  interval: 15m
+  timeout: 10m
+  chart:
+    spec:
+      chart: checkmk
+      version: "1.7.0"
+      sourceRef:
+        kind: HelmRepository
+        name: checkmk
+        namespace: checkmk
+      interval: 5m
+  releaseName: checkmk
+  targetNamespace: checkmk
+  install:
+    remediation:
+      remediateLastFailure: true
+  upgrade:
+    remediation:
+      remediateLastFailure: true
+  values:
+    clusterCollector:
+      service:
+        type: LoadBalancer

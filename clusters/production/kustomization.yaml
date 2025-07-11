@@ -11,5 +11,6 @@ resources:
   - traefik-release.yaml
   - traefik-config.yaml
   - cnpg-release.yaml
+  - checkmk-release.yaml
   - infrastructure.yaml
   - applications.yaml
