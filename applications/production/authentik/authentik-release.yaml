@@ -23,7 +23,7 @@ spec:
       optional: true
 
     - kind: Secret
-      name: authentik-database-authentik
+      name: authentik-database-app
       valuesKey: password
       targetPath: authentik.postgresql.password
       optional: true
