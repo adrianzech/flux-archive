@@ -17,10 +17,8 @@ spec:
       interval: 5m
   values:
     authentik:
-      secret_key:
-        secretName: authentik-secret-key
-        secretKey: AUTHENTIK_SECRET_KEY
-        
+      secret_key: file:///run/secrets/authentik/secret_key
+
       error_reporting:
         enabled: true
 
@@ -42,9 +40,18 @@ spec:
         - name: authentik-database-credentials
           secret:
             secretName: authentik-database-authentik
+        - name: authentik-secret-key
+          secret:
+            secretName: authentik-secret-key
+            items:
+              - key: AUTHENTIK_SECRET_KEY
+                path: secret_key
       volumeMounts:
         - name: authentik-database-credentials
           mountPath: /authentik-database-credentials
+          readOnly: true
+        - name: authentik-secret-key
+          mountPath: /run/secrets/authentik
           readOnly: true
 
     worker:
@@ -52,7 +59,16 @@ spec:
         - name: authentik-database-credentials
           secret:
             secretName: authentik-database-authentik
+        - name: authentik-secret-key
+          secret:
+            secretName: authentik-secret-key
+            items:
+              - key: AUTHENTIK_SECRET_KEY
+                path: secret_key
       volumeMounts:
         - name: authentik-database-credentials
           mountPath: /authentik-database-credentials
+          readOnly: true
+        - name: authentik-secret-key
+          mountPath: /run/secrets/authentik
           readOnly: true
