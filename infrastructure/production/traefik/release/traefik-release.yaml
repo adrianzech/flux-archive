@@ -25,33 +25,13 @@ spec:
   install:
     remediation:
       remediateLastFailure: true
-    crds: CreateReplace
   upgrade:
     remediation:
       remediateLastFailure: true
-    crds: CreateReplace
   values:
     additionalArguments:
       - "--global.sendanonymoususage=false"
       - "--serverstransport.insecureskipverify=true"
-
-    readinessProbe:
-      tcpSocket:
-        port: 8000
-      initialDelaySeconds: 5
-      timeoutSeconds: 1
-      periodSeconds: 10
-      successThreshold: 1
-      failureThreshold: 3
-      livenessProbe:
-        httpGet:
-          path: /ping
-          port: 8080
-        initialDelaySeconds: 5
-        timeoutSeconds: 1
-        periodSeconds: 10
-        successThreshold: 1
-        failureThreshold: 3
 
     deployment:
       enabled: true
@@ -95,7 +75,7 @@ spec:
 
     logs:
       general:
-        level: DEBUG
+        level: INFO
       access:
         enabled: true
 
@@ -110,16 +90,3 @@ spec:
       limits:
         cpu: 300m
         memory: 150Mi
-
-    securityContext:
-      capabilities:
-        drop: [ ALL ]
-      readOnlyRootFilesystem: true
-      runAsGroup: 65532
-      runAsNonRoot: true
-      runAsUser: 65532
-      seccompProfile:
-        type: RuntimeDefault
-
-    podSecurityContext:
-      fsGroup: 65532
