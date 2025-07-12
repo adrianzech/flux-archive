@@ -6,4 +6,3 @@ resources:
   - ../metallb/release
   - ../traefik/release
   - ../cnpg
-  - ../checkmk
