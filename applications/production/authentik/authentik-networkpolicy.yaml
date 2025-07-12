@@ -6,14 +6,15 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/name: authentik
+      app.kubernetes.io/component: server
+      app.kubernetes.io/instance: authentik
   policyTypes:
     - Ingress
   ingress:
     - from:
         - namespaceSelector:
             matchLabels:
-              kubernetes.io/metadata.name: traefik
+              name: traefik
       ports:
         - protocol: TCP
           port: 9000
