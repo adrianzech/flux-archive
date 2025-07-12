@@ -10,27 +10,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: traefik
-      namespace: traefik
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: cert-manager
-      namespace: cert-manager
-    - apiVersion: apps/v1
-      kind: DaemonSet
-      name: longhorn-manager
-      namespace: longhorn-system
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: controller
-      namespace: metallb-system
-    - apiVersion: apps/v1
-      kind: DaemonSet
-      name: speaker
-      namespace: metallb-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
