@@ -17,6 +17,9 @@ spec:
       interval: 5m
   releaseName: traefik
   targetNamespace: traefik
+  dependsOn:
+    - name: metallb
+      namespace: metallb-system
   install:
     remediation:
       remediateLastFailure: true
