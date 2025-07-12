@@ -35,16 +35,30 @@ spec:
       - "--global.sendanonymoususage=false"
       - "--serverstransport.insecureskipverify=true"
 
-    podDisruptionBudget:
-      enabled: true
-      maxUnavailable: 1
-      readinessProbe:
-        tcpSocket:
+    readinessProbe:
+      tcpSocket:
+        port: 8000
+      initialDelaySeconds: 5
+      timeoutSeconds: 1
+      periodSeconds: 10
+      successThreshold: 1
+      failureThreshold: 3
+      livenessProbe:
+        httpGet:
+          path: /ping
+          port: 8080
         initialDelaySeconds: 5
         timeoutSeconds: 1
         periodSeconds: 10
         successThreshold: 1
         failureThreshold: 3
+
+    deployment:
+      enabled: true
+      replicas: 2
+      podDisruptionBudget:
+        enabled: true
+        maxUnavailable: 1
 
     ports:
       web:
