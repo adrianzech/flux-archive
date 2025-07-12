@@ -29,6 +29,7 @@ spec:
     remediation:
       remediateLastFailure: true
   values:
+    installCRDs: true
     additionalArguments:
       - "--global.sendanonymoususage=false"
       - "--serverstransport.insecureskipverify=true"
