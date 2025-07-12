@@ -29,6 +29,10 @@ spec:
 
   values:
     authentik:
+      env:
+        - name: AUTHENTIK_HOST
+          value: https://sso.zech.dev
+
       error_reporting:
         enabled: true
 
