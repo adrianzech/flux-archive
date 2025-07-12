@@ -4,3 +4,4 @@ resources:
   - traefik-cloudflare-api-token-secret.yaml
   - traefik-tls-store.yaml
   - traefik-dashboard-ingress.yaml
+  - authentik-middleware.yaml
