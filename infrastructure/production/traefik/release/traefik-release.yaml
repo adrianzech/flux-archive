@@ -20,6 +20,8 @@ spec:
   dependsOn:
     - name: metallb
       namespace: metallb-system
+    - name: cert-manager
+      namespace: cert-manager
   install:
     remediation:
       remediateLastFailure: true
@@ -33,12 +35,16 @@ spec:
       - "--global.sendanonymoususage=false"
       - "--serverstransport.insecureskipverify=true"
 
-    deployment:
+    podDisruptionBudget:
       enabled: true
-      replicas: 2
+      maxUnavailable: 1
       readinessProbe:
         tcpSocket:
-          port: 8000
+        initialDelaySeconds: 5
+        timeoutSeconds: 1
+        periodSeconds: 10
+        successThreshold: 1
+        failureThreshold: 3
 
     ports:
       web:
