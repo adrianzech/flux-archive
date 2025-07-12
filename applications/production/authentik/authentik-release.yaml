@@ -28,15 +28,16 @@ spec:
       optional: true
 
   values:
-    service:
-      main:
-        enabled: true
-        type: ClusterIP
-        ports:
-          http:
-            port: 80
-            targetPort: 9000
-            protocol: TCP
+    server:
+      service:
+        main:
+          enabled: true
+          type: ClusterIP
+          ports:
+            http:
+              port: 80
+              targetPort: 9000
+              protocol: TCP
 
     authentik:
       env:
