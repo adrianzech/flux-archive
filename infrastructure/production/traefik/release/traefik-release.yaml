@@ -36,9 +36,6 @@ spec:
     deployment:
       enabled: true
       replicas: 2
-      podDisruptionBudget:
-        enabled: true
-        maxUnavailable: 1
 
     ports:
       web:
@@ -70,8 +67,6 @@ spec:
       type: LoadBalancer
       annotations:
         metallb.universe.tf/loadBalancerIPs: "10.0.20.100"
-      spec:
-        externalTrafficPolicy: Local
 
     logs:
       general:
