@@ -28,4 +28,4 @@ spec:
   values:
     clusterCollector:
       service:
-        type: LoadBalancer
+        type: ClusterIP
