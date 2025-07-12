@@ -4,17 +4,19 @@ metadata:
   name: applications
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: flux-system
+      namespace: flux-system
+    - name: infrastructure-configs
+      namespace: flux-system
   interval: 10m
   path: ./applications/production
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  dependsOn:
-    - name: flux-system
-      namespace: flux-system
-    - name: infrastructure-configs
-      namespace: flux-system
+  wait: true
+  timeout: 5m
   decryption:
     provider: sops
     secretRef:
