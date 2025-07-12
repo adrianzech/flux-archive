@@ -7,3 +7,4 @@ resources:
   - authentik-database.yaml
   - authentik-release.yaml
   - authentik-ingress.yaml
+  - authentik-networkpolicy.yaml
