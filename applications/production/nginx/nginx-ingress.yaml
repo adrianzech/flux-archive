@@ -12,3 +12,6 @@ spec:
       services:
         - name: nginx-service
           port: 80
+      middlewares:
+        - name: authentik
+          namespace: traefik
