@@ -12,9 +12,3 @@ spec:
       services:
         - name: authentik-server
           port: http
-
-    - match: HostRegexp(`{host:.+}`) && PathPrefix(`/outpost.goauthentik.io`)
-      kind: Rule
-      services:
-        - name: authentik-server
-          port: http
