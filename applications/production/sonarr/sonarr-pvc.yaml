@@ -36,6 +36,6 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 2Ti
+      storage: 1Ti
   storageClassName: ""
   volumeName: nfs-media-downloads
