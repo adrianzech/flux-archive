@@ -11,7 +11,7 @@ spec:
   storageClassName: ""
   nfs:
     server: 10.0.1.30
-    path: "/mnt/user/tv"
+    path: "/mnt/user/TV"
   mountOptions:
     - nfsvers=4.1
     - tcp
@@ -28,7 +28,7 @@ spec:
   storageClassName: ""
   nfs:
     server: 10.0.1.30
-    path: "/mnt/user/movies"
+    path: "/mnt/user/Movies"
   mountOptions:
     - nfsvers=4.1
     - tcp
@@ -45,7 +45,7 @@ spec:
   storageClassName: ""
   nfs:
     server: 10.0.1.30
-    path: "/mnt/user/downloads"
+    path: "/mnt/user/Downloads"
   mountOptions:
     - nfsvers=4.1
     - tcp
