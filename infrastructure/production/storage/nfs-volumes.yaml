@@ -5,13 +5,30 @@ metadata:
   name: nfs-media-tv
 spec:
   capacity:
-    storage: 10Ti
+    storage: 60Ti
   accessModes:
     - ReadWriteMany
   storageClassName: ""
   nfs:
     server: 10.0.1.30
-    path: "/mnt/user/TV"
+    path: "/mnt/user/tv"
+  mountOptions:
+    - nfsvers=4.1
+    - tcp
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-media-movies
+spec:
+  capacity:
+    storage: 60Ti
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  nfs:
+    server: 10.0.1.30
+    path: "/mnt/user/movies"
   mountOptions:
     - nfsvers=4.1
     - tcp
@@ -22,13 +39,13 @@ metadata:
   name: nfs-media-downloads
 spec:
   capacity:
-    storage: 1Ti
+    storage: 60Ti
   accessModes:
     - ReadWriteMany
   storageClassName: ""
   nfs:
     server: 10.0.1.30
-    path: "/mnt/user/Downloads"
+    path: "/mnt/user/downloads"
   mountOptions:
     - nfsvers=4.1
     - tcp

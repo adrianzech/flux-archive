@@ -5,3 +5,4 @@ resources:
   - ../longhorn/config
   - ../metallb/config
   - ../traefik/config
+  - ../storage
