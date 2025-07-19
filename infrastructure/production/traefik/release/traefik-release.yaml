@@ -5,6 +5,7 @@ metadata:
   namespace: traefik
 spec:
   interval: 15m
+  timeout: 10
   chart:
     spec:
       chart: traefik
