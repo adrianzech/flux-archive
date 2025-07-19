@@ -19,9 +19,11 @@ spec:
   install:
     remediation:
       remediateLastFailure: true
+    crds: CreateReplace
   upgrade:
     remediation:
       remediateLastFailure: true
+    crds: CreateReplace
   values:
     installCRDs: true
     extraArgs:
