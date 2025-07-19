@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: infrastructure-controller
+    - name: infrastructure-controllers
       namespace: flux-system
   interval: 10m
   path: ./base/production
