@@ -14,7 +14,7 @@ spec:
     kind: GitRepository
     name: flux-system
   wait: true
-  timeout: 5m
+  timeout: 10m
   decryption:
     provider: sops
     secretRef:

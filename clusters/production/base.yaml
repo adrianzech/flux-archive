@@ -14,6 +14,8 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+  wait: true
+  timeout: 10m
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -30,3 +32,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+  wait: true
+  timeout: 10m
