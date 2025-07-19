@@ -5,5 +5,5 @@ resources:
   - ../longhorn/release
   - ../metallb/release
   - ../traefik/release
-  - ../cnpg
-  - ../checkmk
+  - ../checkmk/release
+  - ../cnpg/release
