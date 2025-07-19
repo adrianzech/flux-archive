@@ -7,7 +7,7 @@ spec:
   dependsOn:
     - name: infrastructure-configs
       namespace: flux-system
-    - name: base
+    - name: base-resources
       namespace: flux-system
   interval: 10m
   path: ./applications/production
