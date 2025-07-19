@@ -3,6 +3,3 @@ kind: Kustomization
 resources:
   - flux-system/
   - infrastructure.yaml
-  - base-namespaces.yaml
-  - base-resources.yaml
-  - applications.yaml
