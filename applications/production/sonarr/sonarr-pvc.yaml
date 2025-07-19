@@ -23,7 +23,7 @@ spec:
   resources:
     requests:
       storage: 10Ti
-  storageClassName: ""
+  storageClassName: "nfs"
   volumeName: nfs-media-tv
 ---
 apiVersion: v1
@@ -37,5 +37,5 @@ spec:
   resources:
     requests:
       storage: 1Ti
-  storageClassName: ""
+  storageClassName: "nfs"
   volumeName: nfs-media-downloads
