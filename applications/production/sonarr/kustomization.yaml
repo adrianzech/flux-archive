@@ -4,5 +4,4 @@ resources:
   - sonarr-namespace.yaml
   - sonarr-pvc.yaml
   - sonarr-ingress.yaml
-  - sonarr-repository.yaml
   - sonarr-release.yaml

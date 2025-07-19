@@ -1,23 +1,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: applications
+  name: base
   namespace: flux-system
 spec:
   dependsOn:
-    - name: infrastructure-configs
-      namespace: flux-system
-    - name: base
+    - name: infrastructure-controller
       namespace: flux-system
   interval: 10m
-  path: ./applications/production
+  path: ./base/production
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
-  wait: true
-  timeout: 5m
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age

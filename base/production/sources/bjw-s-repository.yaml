@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: bjw-s-charts
-  namespace: media
+  namespace: flux-system
 spec:
-  interval: 30m
+  interval: 1h
   url: https://bjw-s.github.io/helm-charts
