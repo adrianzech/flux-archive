@@ -10,7 +10,7 @@ spec:
     - match: Host(`sonarr.zech.dev`)
       kind: Rule
       services:
-        - name: sonarr-service
+        - name: sonarr
           port: 8989
       middlewares:
         - name: authentik
