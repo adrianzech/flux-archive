@@ -26,7 +26,7 @@ spec:
       name: authentik-database-app
       valuesKey: password
       targetPath: authentik.postgresql.password
-      optional: true
+      optional: false
 
   values:
     server:
