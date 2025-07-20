@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: sonarr
+  name: radarr
   namespace: media
 spec:
   interval: 15m
@@ -15,40 +15,40 @@ spec:
         namespace: media
   values:
     controllers:
-      sonarr:
+      radarr:
         containers:
           app:
             image:
-              repository: linuxserver/sonarr
-              tag: "4.0.15"
+              repository: linuxserver/radarr
+              tag: "5.26.2"
 
             env:
               TZ: "Europe/Vienna"
               PUID: "1000"
               PGID: "1000"
-              RADARR__AUTH__METHOD: External
-              RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
+              radarr__AUTH__METHOD: External
+              radarr__AUTH__REQUIRED: DisabledForLocalAddresses
 
     service:
       app:
-        controller: sonarr
+        controller: radarr
         ports:
           http:
-            port: 8989
+            port: 7878
 
     persistence:
       config:
         enabled: true
-        existingClaim: sonarr-config-pvc
+        existingClaim: radarr-config-pvc
         globalMounts:
           - path: /config
 
       media-tv:
         enabled: true
         type: persistentVolumeClaim
-        existingClaim: nfs-media-tv-pvc
+        existingClaim: nfs-media-movies-pvc
         globalMounts:
-          - path: /tv
+          - path: /movies
 
       media-downloads:
         enabled: true
