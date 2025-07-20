@@ -43,7 +43,7 @@ spec:
         globalMounts:
           - path: /config
 
-      media-tv:
+      media-movies:
         enabled: true
         type: persistentVolumeClaim
         existingClaim: nfs-media-movies-pvc
