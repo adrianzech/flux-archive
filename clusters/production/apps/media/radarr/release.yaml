@@ -26,8 +26,8 @@ spec:
               TZ: "Europe/Vienna"
               PUID: "1000"
               PGID: "1000"
-              radarr__AUTH__METHOD: External
-              radarr__AUTH__REQUIRED: DisabledForLocalAddresses
+              RADARR__AUTH__METHOD: External
+              RADARR__AUTH__REQUIRED: DisabledForLocalAddresses
 
     service:
       app:
