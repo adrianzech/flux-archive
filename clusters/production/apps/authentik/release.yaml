@@ -5,6 +5,7 @@ metadata:
   namespace: authentik
 spec:
   interval: 15m
+  timeout: 10m
   chart:
     spec:
       chart: authentik
@@ -14,6 +15,9 @@ spec:
         name: authentik
         namespace: authentik
       interval: 5m
+  dependsOn:
+    - name: authentik-database
+      namespace: authentik
   valuesFrom:
     - kind: Secret
       name: authentik-secret-key
