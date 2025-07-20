@@ -115,6 +115,7 @@ metadata:
 spec:
   dependsOn:
     - name: core-cert-manager-release
+    - name: core-traefik-release
   interval: 10m
   path: ./clusters/production/core/cert-manager/config
   prune: true
