@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-longhorn-release
+  name: core-longhorn-controller
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./clusters/production/core/longhorn/release
+  path: ./clusters/production/core/longhorn/controller
   prune: true
   sourceRef:
     kind: GitRepository
@@ -17,11 +17,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-metallb-release
+  name: core-metallb-controller
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./clusters/production/core/metallb/release
+  path: ./clusters/production/core/metallb/controller
   prune: true
   sourceRef:
     kind: GitRepository
@@ -32,11 +32,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-cert-manager-release
+  name: core-cert-manager-controller
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./clusters/production/core/cert-manager/release
+  path: ./clusters/production/core/cert-manager/controller
   prune: true
   sourceRef:
     kind: GitRepository
@@ -47,14 +47,14 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-traefik-release
+  name: core-traefik-controller
   namespace: flux-system
 spec:
   dependsOn:
-    - name: core-metallb-release
-    - name: core-cert-manager-release
+    - name: core-metallb-controller
+    - name: core-cert-manager-controller
   interval: 10m
-  path: ./clusters/production/core/traefik/release
+  path: ./clusters/production/core/traefik/controller
   prune: true
   sourceRef:
     kind: GitRepository
@@ -65,11 +65,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-cnpg-release
+  name: core-cnpg-controller
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./clusters/production/core/cnpg/release
+  path: ./clusters/production/core/cnpg/controller
   prune: true
   sourceRef:
     kind: GitRepository
@@ -80,11 +80,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-checkmk-release
+  name: core-checkmk-controller
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./clusters/production/core/checkmk/release
+  path: ./clusters/production/core/checkmk/controller
   prune: true
   sourceRef:
     kind: GitRepository
@@ -98,7 +98,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: core-metallb-release
+    - name: core-metallb-controller
   interval: 10m
   path: ./clusters/production/core/metallb/config
   prune: true
@@ -114,8 +114,8 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: core-cert-manager-release
-    - name: core-traefik-release
+    - name: core-cert-manager-controller
+    - name: core-traefik-controller
   interval: 10m
   path: ./clusters/production/core/cert-manager/config
   prune: true
@@ -135,7 +135,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: core-traefik-release
+    - name: core-traefik-controller
   interval: 10m
   path: ./clusters/production/core/traefik/config
   prune: true
@@ -155,8 +155,8 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: core-longhorn-release
-    - name: core-traefik-release
+    - name: core-longhorn-controller
+    - name: core-traefik-controller
   interval: 10m
   path: ./clusters/production/core/longhorn/config
   prune: true
@@ -172,8 +172,8 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: core-checkmk-release
-    - name: core-traefik-release
+    - name: core-checkmk-controller
+    - name: core-traefik-controller
   interval: 10m
   path: ./clusters/production/core/checkmk/config
   prune: true

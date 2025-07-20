@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: core-longhorn-release
+    - name: core-longhorn-controller
   interval: 10m
   path: ./clusters/production/base
   prune: true
