@@ -5,5 +5,4 @@ metadata:
   namespace: media
 spec:
   interval: 1h
-  timeout: 10m
   url: https://bjw-s-labs.github.io/helm-charts

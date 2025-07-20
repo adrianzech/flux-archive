@@ -4,5 +4,5 @@ metadata:
   name: checkmk
   namespace: checkmk
 spec:
-  interval: 10m
+  interval: 1h
   url: https://checkmk.github.io/checkmk_kube_agent
