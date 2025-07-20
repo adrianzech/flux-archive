@@ -39,6 +39,10 @@ spec:
               port: 80
               targetPort: 9000
               protocol: TCP
+      readinessProbe:
+        initialDelaySeconds: 120
+        livenessProbe:
+          initialDelaySeconds: 120
 
     authentik:
       env:
