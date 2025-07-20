@@ -16,7 +16,7 @@ This project relies on a set of essential tools to build and manage the Kubernet
 * **[FluxCD](https://fluxcd.io/)**: The GitOps tool for keeping the cluster in sync with this repository.
 * **[Kustomize](https://kustomize.io/)**: Used to customize Kubernetes resource manifests.
 * **[Helm](https://helm.sh/)**: Used via Flux's `HelmRelease` controller to manage third-party applications.
-* **[SOPS](https://github.com/getsops/sops)**: For encrypting secrets in Git, using `age` as the backend.
+* **[SOPS](https://getsops.io/)**: For encrypting secrets in Git, using `age` as the backend.
 
 ## Core Infrastructure
 
@@ -41,6 +41,6 @@ Flux bootstraps the cluster using the kustomizations defined in `clusters/produc
 
 ## Secrets Management
 
-Secrets in this repository are encrypted using [SOPS](https://github.com/getsops/sops) with [age](https://github.com/FiloSottile/age). The `.sops.yaml` file defines the encryption rules for all `.yaml` files. Any resource containing a `data` or `stringData` field will be automatically encrypted by SOPS.
+Secrets in this repository are encrypted using [SOPS](https://getsops.io/) with [age](https://age-encryption.org/). The `.sops.yaml` file defines the encryption rules for all `.yaml` files. Any resource containing a `data` or `stringData` field will be automatically encrypted by SOPS.
 
 To decrypt or edit secrets, you will need the private `age` key, which is not stored in this repository and is protected by `.gitignore`.
