@@ -1,3 +1,4 @@
+# clusters/production/base.yaml
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -6,7 +7,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: core-longhorn
+    - name: core-longhorn-release # Hängt nur vom Longhorn Controller ab, nicht von seiner Config
   interval: 10m
   path: ./clusters/production/base
   prune: true

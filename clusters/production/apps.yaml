@@ -6,8 +6,10 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: core-traefik
-    - name: core-cnpg
+    - name: core-traefik-config
+    - name: core-cert-manager-config
+    - name: core-longhorn-config
+    - name: core-cnpg-release
     - name: base-resources
   interval: 10m
   path: ./clusters/production/apps
