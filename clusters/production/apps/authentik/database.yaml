@@ -16,8 +16,3 @@ spec:
     initdb:
       database: authentik
       owner: authentik
-
-  postgresql:
-    primaryUpdateStrategy: unsupervised
-    fsGroup: 26
-    supplementalGroups: [ 26 ]
