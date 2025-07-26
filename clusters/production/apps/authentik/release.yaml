@@ -28,6 +28,16 @@ spec:
       targetPath: authentik.postgresql.password
       optional: false
 
+    - kind: Secret
+      name: authentik-email-credentials
+      valuesKey: username
+      targetPath: email.username
+
+    - kind: Secret
+      name: authentik-email-credentials
+      valuesKey: password
+      targetPath: email.password
+
   values:
     server:
       service:
@@ -58,3 +68,11 @@ spec:
 
     redis:
       enabled: true
+
+    email:
+      host: "smtp.eu.mailgun.org"
+      port: 587
+      use_tls: true
+      use_ssl: false
+      timeout: 30
+      from: "sso@zech.co"
