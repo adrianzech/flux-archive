@@ -39,10 +39,6 @@ spec:
               port: 80
               targetPort: 9000
               protocol: TCP
-      readinessProbe:
-        initialDelaySeconds: 120
-        livenessProbe:
-          initialDelaySeconds: 120
 
     authentik:
       env:
@@ -57,23 +53,8 @@ spec:
         user: authentik
         database: authentik
 
-        resources:
-          requests:
-            cpu: 100m
-            memory: 256Mi
-          limits:
-            cpu: 500m
-            memory: 512Mi
-
     postgresql:
       enabled: false
 
     redis:
       enabled: true
-      resources:
-        requests:
-          cpu: 50m
-          memory: 64Mi
-        limits:
-          cpu: 200m
-          memory: 128Mi
