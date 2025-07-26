@@ -3,8 +3,6 @@ kind: Cluster
 metadata:
   name: authentik-database
   namespace: authentik
-  annotations:
-    cnpg.io/pvc-owner-group: '26'
 spec:
   instances: 3
 
@@ -18,3 +16,8 @@ spec:
     initdb:
       database: authentik
       owner: authentik
+
+  postgresql:
+    primaryUpdateStrategy: unsupervised
+    fsGroup: 26
+    supplementalGroups: [ 26 ]
