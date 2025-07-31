@@ -59,7 +59,7 @@ spec:
         enabled: true
 
       postgresql:
-        host: authentik-database-rw.authentik.svc.cluster.local
+        host: authentik-database-rw.auth.svc.cluster.local
         user: authentik
         database: authentik
 
