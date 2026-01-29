@@ -3,9 +3,6 @@ kind: Kustomization
 resources:
   - gotk-components.yaml
   - gotk-sync.yaml
-  - monitoring
-  - notifications
-  - image-automation
 patches:
   - patch: |-
       - op: add
