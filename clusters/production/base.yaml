@@ -4,8 +4,6 @@ metadata:
   name: base
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: core-proxmox-csi-controller
   interval: 10m
   path: ./clusters/production/base
   prune: true

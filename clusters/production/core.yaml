@@ -5,6 +5,8 @@ metadata:
   name: core-proxmox-csi-controller
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: base
   interval: 10m
   path: ./clusters/production/core/proxmox-csi/controller
   prune: true
@@ -20,6 +22,8 @@ metadata:
   name: core-metallb-controller
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: base
   interval: 10m
   path: ./clusters/production/core/metallb/controller
   prune: true
@@ -35,6 +39,8 @@ metadata:
   name: core-cert-manager-controller
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: base
   interval: 10m
   path: ./clusters/production/core/cert-manager/controller
   prune: true
@@ -51,6 +57,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
+    - name: base
     - name: core-metallb-controller
     - name: core-cert-manager-controller
   interval: 10m
@@ -68,6 +75,8 @@ metadata:
   name: core-cnpg-controller
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: base
   interval: 10m
   path: ./clusters/production/core/cnpg/controller
   prune: true
@@ -83,6 +92,8 @@ metadata:
   name: core-checkmk-controller
   namespace: flux-system
 spec:
+  dependsOn:
+    - name: base
   interval: 10m
   path: ./clusters/production/core/checkmk/controller
   prune: true
