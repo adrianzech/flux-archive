@@ -6,4 +6,3 @@ resources:
   - ./storage
   - ./resource-quotas
   - ./network-policies
-  - ./pod-security
