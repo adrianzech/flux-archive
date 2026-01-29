@@ -26,3 +26,5 @@ spec:
   values:
     existingConfigSecret: proxmox-csi-plugin
     existingConfigSecretKey: config.yaml
+    options:
+      enableCapacity: false
