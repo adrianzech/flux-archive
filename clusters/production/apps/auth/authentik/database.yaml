@@ -8,7 +8,7 @@ spec:
 
   storage:
     size: 10Gi
-    storageClass: "longhorn"
+    storageClass: "proxmox-csi"
 
   bootstrap:
     initdb:

@@ -1,0 +1,54 @@
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: flux-system-alerts
+  namespace: flux-system
+spec:
+  summary: "Flux alerts for production cluster"
+
+  eventSeverity: error
+  eventSources:
+    - kind: GitRepository
+      name: '*'
+    - kind: Kustomization
+      name: '*'
+    - kind: HelmRelease
+      name: '*'
+    - kind: HelmRepository
+      name: '*'
+
+  # Uncomment the provider you want to use
+  # providerRef:
+  #   name: discord
+  # OR
+  # providerRef:
+  #   name: slack
+
+  suspend: false
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta3
+kind: Alert
+metadata:
+  name: flux-info-alerts
+  namespace: flux-system
+spec:
+  summary: "Flux info alerts for production cluster"
+
+  eventSeverity: info
+  eventSources:
+    - kind: GitRepository
+      name: '*'
+    - kind: Kustomization
+      name: '*'
+    - kind: HelmRelease
+      name: '*'
+
+  # Uncomment the provider you want to use
+  # providerRef:
+  #   name: discord
+  # OR
+  # providerRef:
+  #   name: slack
+
+  suspend: true  # Set to false to enable info notifications

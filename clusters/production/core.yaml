@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-longhorn-controller
+  name: core-proxmox-csi-controller
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./clusters/production/core/longhorn/controller
+  path: ./clusters/production/core/proxmox-csi/controller
   prune: true
   sourceRef:
     kind: GitRepository
@@ -151,19 +151,22 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-longhorn-config
+  name: core-proxmox-csi-config
   namespace: flux-system
 spec:
   dependsOn:
-    - name: core-longhorn-controller
-    - name: core-traefik-controller
+    - name: core-proxmox-csi-controller
   interval: 10m
-  path: ./clusters/production/core/longhorn/config
+  path: ./clusters/production/core/proxmox-csi/config
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
   wait: true
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization

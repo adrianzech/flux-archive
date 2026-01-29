@@ -4,3 +4,6 @@ resources:
   - ./namespaces.yaml
   - ./sources
   - ./storage
+  - ./resource-quotas
+  - ./network-policies
+  - ./pod-security

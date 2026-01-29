@@ -8,7 +8,7 @@ spec:
   dependsOn:
     - name: core-traefik-config
     - name: core-cert-manager-config
-    - name: core-longhorn-config
+    - name: core-proxmox-csi-config
     - name: core-cnpg-controller
     - name: base
   interval: 10m
