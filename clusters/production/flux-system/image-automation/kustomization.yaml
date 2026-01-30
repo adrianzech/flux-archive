@@ -1,7 +1,0 @@
----
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-  # Uncomment to enable image automation
-  # - image-update-automation.yaml
-  # - example-policies.yaml
