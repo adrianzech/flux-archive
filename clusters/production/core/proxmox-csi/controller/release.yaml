@@ -28,3 +28,12 @@ spec:
     existingConfigSecretKey: config.yaml
     options:
       enableCapacity: false
+    extraVolumes:
+      - name: proxmox-ca
+        configMap:
+          name: proxmox-ca
+    extraVolumeMounts:
+      - name: proxmox-ca
+        mountPath: /etc/ssl/certs/ca-certificates.crt
+        subPath: ca.crt
+        readOnly: true
