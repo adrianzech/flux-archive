@@ -22,7 +22,6 @@ metadata:
 spec:
   dependsOn:
     - name: dev-base
-    - name: dev-core-external-secrets-controller
   interval: 10m
   retryInterval: 1m
   healthChecks:
