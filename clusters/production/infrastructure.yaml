@@ -22,6 +22,7 @@ metadata:
 spec:
   dependsOn:
     - name: prod-base
+    - name: prod-core-external-secrets-controller
   interval: 10m
   retryInterval: 1m
   healthChecks:
