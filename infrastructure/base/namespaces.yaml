@@ -54,3 +54,11 @@ metadata:
   labels:
     name: flux-system
     pod-security.kubernetes.io/enforce: baseline
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: external-secrets
+  labels:
+    name: external-secrets
+    pod-security.kubernetes.io/enforce: baseline

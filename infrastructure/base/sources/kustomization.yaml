@@ -4,6 +4,7 @@ resources:
   - cert-manager-repository.yaml
   - checkmk-repository.yaml
   - cnpg-repository.yaml
+  - external-secrets-repository.yaml
   - metallb-repository.yaml
   - proxmox-csi-repository.yaml
   - traefik-repository.yaml

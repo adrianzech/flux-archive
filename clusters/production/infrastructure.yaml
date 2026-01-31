@@ -17,6 +17,46 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
+  name: prod-core-external-secrets-controller
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: prod-base
+  interval: 10m
+  retryInterval: 1m
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      name: external-secrets
+      namespace: external-secrets
+  path: ./infrastructure/base/core/external-secrets/controller
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+  timeout: 10m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: prod-core-external-secrets-config
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: prod-core-external-secrets-controller
+  interval: 10m
+  retryInterval: 1m
+  path: ./infrastructure/production/external-secrets
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  wait: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
   name: prod-core-proxmox-csi-controller
   namespace: flux-system
 spec:
@@ -36,10 +76,6 @@ spec:
     name: flux-system
   wait: true
   timeout: 10m
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -54,8 +90,8 @@ spec:
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
-      name: traefik
-      namespace: traefik
+      name: metallb
+      namespace: metallb-system
   path: ./infrastructure/base/core/metallb/controller
   prune: true
   sourceRef:
@@ -102,8 +138,8 @@ spec:
   healthChecks:
     - apiVersion: helm.toolkit.fluxcd.io/v2
       kind: HelmRelease
-      name: metallb
-      namespace: metallb-system
+      name: traefik
+      namespace: traefik
   path: ./infrastructure/base/core/traefik/controller
   prune: true
   sourceRef:
@@ -183,6 +219,7 @@ spec:
   dependsOn:
     - name: prod-core-cert-manager-controller
     - name: prod-core-traefik-controller
+    - name: prod-core-external-secrets-controller
   interval: 10m
   retryInterval: 1m
   path: ./infrastructure/base/core/cert-manager/config
@@ -191,10 +228,6 @@ spec:
     kind: GitRepository
     name: flux-system
   wait: true
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -204,6 +237,7 @@ metadata:
 spec:
   dependsOn:
     - name: prod-core-traefik-controller
+    - name: prod-core-external-secrets-controller
   interval: 10m
   retryInterval: 1m
   path: ./infrastructure/base/core/traefik/config
@@ -212,10 +246,6 @@ spec:
     kind: GitRepository
     name: flux-system
   wait: true
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -233,10 +263,6 @@ spec:
     kind: GitRepository
     name: flux-system
   wait: true
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-age
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
