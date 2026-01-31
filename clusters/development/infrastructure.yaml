@@ -69,7 +69,7 @@ spec:
       kind: HelmRelease
       name: proxmox-csi-plugin
       namespace: csi-proxmox
-  path: ./infrastructure/base/core/proxmox-csi/controller
+  path: ./infrastructure/development/core/proxmox-csi/controller
   prune: true
   sourceRef:
     kind: GitRepository
@@ -222,7 +222,7 @@ spec:
     - name: dev-core-external-secrets-controller
   interval: 10m
   retryInterval: 1m
-  path: ./infrastructure/base/core/cert-manager/config
+  path: ./infrastructure/development/core/cert-manager/config
   prune: true
   sourceRef:
     kind: GitRepository
@@ -240,7 +240,7 @@ spec:
     - name: dev-core-external-secrets-controller
   interval: 10m
   retryInterval: 1m
-  path: ./infrastructure/base/core/traefik/config
+  path: ./infrastructure/development/core/traefik/config
   prune: true
   sourceRef:
     kind: GitRepository
